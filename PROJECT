@@ -1,0 +1,16 @@
+domain: yo.logsync
+layout:
+- go.kubebuilder.io/v3
+projectName: logsync-crd
+repo: github.com/sanoyo/logsync-crd
+resources:
+- api:
+    crdVersion: v1
+    namespaced: true
+  controller: true
+  domain: yo.logsync
+  group: logging
+  kind: LogSync
+  path: github.com/sanoyo/logsync-crd/api/v1
+  version: v1
+version: "3"

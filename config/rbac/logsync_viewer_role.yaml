@@ -1,0 +1,20 @@
+# permissions for end users to view logsyncs.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: logsync-viewer-role
+rules:
+- apiGroups:
+  - logging.yo.logsync
+  resources:
+  - logsyncs
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - logging.yo.logsync
+  resources:
+  - logsyncs/status
+  verbs:
+  - get

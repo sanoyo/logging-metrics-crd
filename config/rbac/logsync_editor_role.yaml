@@ -1,0 +1,24 @@
+# permissions for end users to edit logsyncs.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: logsync-editor-role
+rules:
+- apiGroups:
+  - logging.yo.logsync
+  resources:
+  - logsyncs
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - logging.yo.logsync
+  resources:
+  - logsyncs/status
+  verbs:
+  - get
