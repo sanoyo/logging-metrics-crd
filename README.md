@@ -1,1 +1,1 @@
-# logging-metrics-crd
+# logsync-crd
