@@ -25,14 +25,14 @@ import (
 
 // LogSyncSpec defines the desired state of LogSync
 type LogSyncSpec struct {
-	ID          string `json:"logsyncID"`
+	ProjectID   string `json:"logsyncID"`
 	Destination string `json:"storage.googleapis.com/logsinks-bucket"`
 	Filter      string `json:"severity >= ERROR"`
 }
 
 // LogSyncStatus defines the observed state of LogSync
 type LogSyncStatus struct {
-	ID          string `json:"logsyncID"`
+	ProjectID   string `json:"logsyncID"`
 	Destination string `json:"storage.googleapis.com/logsinks-bucket"`
 	Filter      string `json:"severity >= ERROR"`
 }
