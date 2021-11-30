@@ -25,17 +25,16 @@ import (
 
 // LogSyncSpec defines the desired state of LogSync
 type LogSyncSpec struct {
-	// INSERT ADDITIONAL SPEC FIELDS - desired state of cluster
-	// Important: Run "make" to regenerate code after modifying this file
-
-	// Foo is an example field of LogSync. Edit logsync_types.go to remove/update
-	Foo string `json:"foo,omitempty"`
+	ID          string `json:"logsyncID"`
+	Destination string `json:"storage.googleapis.com/logsinks-bucket"`
+	Filter      string `json:"severity >= ERROR"`
 }
 
 // LogSyncStatus defines the observed state of LogSync
 type LogSyncStatus struct {
-	// INSERT ADDITIONAL STATUS FIELD - define observed state of cluster
-	// Important: Run "make" to regenerate code after modifying this file
+	ID          string `json:"logsyncID"`
+	Destination string `json:"storage.googleapis.com/logsinks-bucket"`
+	Filter      string `json:"severity >= ERROR"`
 }
 
 //+kubebuilder:object:root=true
