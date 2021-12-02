@@ -3,5 +3,6 @@ kind: LogSync
 metadata:
   name: logsync-sample
 spec:
-  # Add fields here
-  foo: bar
+  projectID: prod-okan
+  destination: storage.googleapis.com/logsinks-bucket
+  filter: severity >= ERROR

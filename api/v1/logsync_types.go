@@ -25,16 +25,16 @@ import (
 
 // LogSyncSpec defines the desired state of LogSync
 type LogSyncSpec struct {
-	ProjectID   string `json:"logsyncID"`
-	Destination string `json:"storage.googleapis.com/logsinks-bucket"`
-	Filter      string `json:"severity >= ERROR"`
+	ProjectID   string `json:"projectID"`
+	Destination string `json:"destination"`
+	Filter      string `json:"filter"`
 }
 
 // LogSyncStatus defines the observed state of LogSync
 type LogSyncStatus struct {
-	ProjectID   string `json:"logsyncID"`
-	Destination string `json:"storage.googleapis.com/logsinks-bucket"`
-	Filter      string `json:"severity >= ERROR"`
+	ProjectIp   string `json:"projectID"`
+	Destination string `json:"destination"`
+	Filter      string `json:"filter"`
 }
 
 //+kubebuilder:object:root=true

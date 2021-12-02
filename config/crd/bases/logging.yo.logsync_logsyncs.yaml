@@ -1,0 +1,74 @@
+
+---
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  annotations:
+    controller-gen.kubebuilder.io/version: v0.4.1
+  creationTimestamp: null
+  name: logsyncs.logging.yo.logsync
+spec:
+  group: logging.yo.logsync
+  names:
+    kind: LogSync
+    listKind: LogSyncList
+    plural: logsyncs
+    singular: logsync
+  scope: Namespaced
+  versions:
+  - name: v1
+    schema:
+      openAPIV3Schema:
+        description: LogSync is the Schema for the logsyncs API
+        properties:
+          apiVersion:
+            description: 'APIVersion defines the versioned schema of this representation
+              of an object. Servers should convert recognized schemas to the latest
+              internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources'
+            type: string
+          kind:
+            description: 'Kind is a string value representing the REST resource this
+              object represents. Servers may infer this from the endpoint the client
+              submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
+            type: string
+          metadata:
+            type: object
+          spec:
+            description: LogSyncSpec defines the desired state of LogSync
+            properties:
+              destination:
+                type: string
+              filter:
+                type: string
+              projectID:
+                type: string
+            required:
+            - destination
+            - filter
+            - projectID
+            type: object
+          status:
+            description: LogSyncStatus defines the observed state of LogSync
+            properties:
+              destination:
+                type: string
+              filter:
+                type: string
+              projectID:
+                type: string
+            required:
+            - destination
+            - filter
+            - projectID
+            type: object
+        type: object
+    served: true
+    storage: true
+    subresources:
+      status: {}
+status:
+  acceptedNames:
+    kind: ""
+    plural: ""
+  conditions: []
+  storedVersions: []
