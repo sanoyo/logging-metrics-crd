@@ -30,6 +30,8 @@ import (
 	loggingv1 "github.com/sanoyo/logsync-crd/api/v1"
 )
 
+var setupLog = ctrl.Log.WithName("setup")
+
 // LogSyncReconciler reconciles a LogSync object
 type LogSyncReconciler struct {
 	client.Client
@@ -56,26 +58,26 @@ func (r *LogSyncReconciler) Reconcile(ctx context.Context, req ctrl.Request) (ct
 		return reconcile.Result{}, err
 	}
 
-	// if instance.Spec.ProjectID == "" || instance.Spec.Destination == "" || instance.Spec.Filter == "" {
-	// 	setupLog.Error(err, "bad argument")
-	// }
+	if instance.Spec.ProjectID == "" || instance.Spec.Destination == "" || instance.Spec.Filter == "" {
+		setupLog.Error(err, "bad argument")
+	}
 
 	projectID := instance.Spec.ProjectID
 	destination := instance.Spec.Destination
 	filter := instance.Spec.Filter
 
 	client, err := logadmin.NewClient(ctx, projectID)
-	// if err != nil {
-	// 	return reconcile.Result{}, err
-	// }
+	if err != nil {
+		setupLog.Error(err, "Unable to initialize")
+	}
 
 	_, err = client.CreateSink(ctx, &logadmin.Sink{
-		ID:          "severe-errors-to-gcs",
+		ID:          "gcs-sync",
 		Destination: destination,
 		Filter:      filter,
 	})
 	if err != nil {
-		return reconcile.Result{}, err
+		setupLog.Error(err, "Unable to create logsync")
 	}
 
 	return ctrl.Result{}, nil

@@ -4,5 +4,5 @@ metadata:
   name: logsync-sample
 spec:
   projectID: prod-okan
-  destination: storage.googleapis.com/logsinks-bucket
+  destination: storage.googleapis.com/okan-tfstate
   filter: severity >= ERROR
